@@ -42,7 +42,7 @@ Add `GOOGLE_API_KEY` (or `GEMINI_API_KEY`) and a randomly generated `SECRET_KEY`
 uvicorn app:app --reload --reload-exclude "$PWD\.venv" --port 8000
 ```
 
-Open `http://127.0.0.1:8000`, create an account, and sign in. Without a Gemini key, registration, saved plans, shopping links, and budget-safe fallback recommendations still work; add a key to enable Gemini text and outfit-image recommendations. Accounts and recommendation history are stored in the ignored local `data/` folder. Uploaded outfit images are stored in `static/uploads/`. In PowerShell, the absolute virtualenv exclusion prevents dependency files from triggering reloads and expiring in-memory sessions.
+Open `http://127.0.0.1:8000/`, create an account, and sign in. Without a Gemini key, registration, saved plans, shopping links, and budget-safe fallback recommendations still work; add a key to enable Gemini text and outfit-image recommendations. Accounts and recommendation history are stored in the ignored local `data/` folder. Uploaded outfit images are stored in `static/uploads/`. In PowerShell, the absolute virtualenv exclusion prevents dependency files from triggering reloads and expiring in-memory sessions.
 
 The authenticated **Budget Profile** page is at `/financial-profile` (also linked in the top navigation). Enter monthly take-home income, essential expenses, and a monthly savings goal once; the app calculates `max(0, income - expenses - savings goal)` and prefills that amount in all three planners. This is a monthly estimate based on the values you provide, not a bank connection or account-balance check.
 
