@@ -116,7 +116,7 @@ def _generate_json(prompt: str, fallback: dict[str, Any], image_path: str | Path
         except HTTPException:
             raise
         except Exception as error:
-            raise HTTPException(status_code=500, detail=f"Gemini recommendation generation failed: {error}") from error
+            return fallback, "budget-safe fallback"
     return fallback, "budget-safe fallback"
 
 
