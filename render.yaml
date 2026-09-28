@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: pocketsmart-ai
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: POCKETSMART_DATA_DIR
+        value: /var/data
+      - key: GOOGLE_API_KEY
+        sync: false
+    disk:
+      name: pocketsmart-data
+      mountPath: /var/data
+      sizeGB: 1
